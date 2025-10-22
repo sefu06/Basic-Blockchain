@@ -1,4 +1,6 @@
+import java.security.Key;
 import java.security.MessageDigest;
+import java.util.Base64;
 
 public class StringUtil {
     // Applies Sha256 to a string and returns the result.
@@ -19,6 +21,11 @@ public class StringUtil {
             throw new RuntimeException(e);
         }
     }
+
+    public static String getStringFromKey(Key key) {
+        return Base64.getEncoder().encodeToString(key.getEncoded());
+    }
+
 }
     
 
