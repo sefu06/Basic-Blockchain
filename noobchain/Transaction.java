@@ -1,5 +1,8 @@
+
+package noobchain;
 import java.util.ArrayList;
 import java.security.*;
+
 
 //transaction will carry the data: public key of sender, public key of reciever, amount transferred, inputs and outputs, a cryptographic signature
 public class Transaction {
@@ -28,7 +31,18 @@ public class Transaction {
         sequence++;
         return StringUtil.applySha256(StringUtil.getStringFromKey(sender) +
                 StringUtil.getStringFromKey(recipient) + Float.toString(value) + sequence);
-        
-    
-}
+
+    }
+
+    public void generateSignature(PrivateKey privateKey) {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(recipient)
+                + Float.toString(value);
+        signature = StringUtil.applyECDSASig(privateKey, data);
+    }
+
+    public boolean verifiySignature() {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(recipient)
+                + Float.toString(value);
+        return StringUtil.verifyECDSASig(sender, data, signature);
+    }
 }
