@@ -8,8 +8,9 @@ import com.google.gson.GsonBuilder;
 public class NoobChain {
 
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
-    public static HashMap<String, TransactionOutput> UTXOS = new HashMap<String,TransactionOutput>();
+    public static HashMap<String, TransactionOutput> UTXOs = new HashMap<String,TransactionOutput>();
     public static int difficulty = 5;
+    public static float minimumTransaction = 0.1f;
     public static Wallet walletA;
     public static Wallet walletB;
 
@@ -28,7 +29,7 @@ public class NoobChain {
         transaction.generateSignature(walletA.privateKey);
 
         System.out.println("Is signature verified");
-        System.out.println(transaction.verifiySignature());
+        System.out.println(transaction.verifySignature());
         
     }
 
