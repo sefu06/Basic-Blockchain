@@ -30,7 +30,7 @@ public class Block {
     }
 
     public void mineBlock(int difficulty) {
-        
+
         merkleRoot = StringUtil.getMerkleRoot(transactions);
         String target = StringUtil.getDificultyString(difficulty); // Create a string with difficulty * "0"
         while (!hash.substring(0, difficulty).equals(target)) {
@@ -39,6 +39,21 @@ public class Block {
         }
         System.out.println("Block Mined!!! : " + hash);
 
+    }
+    
+    public boolean addTransaction(Transaction transaction) {
+        if (transaction == null)
+            return false;
+        if ((!"0".equals(previousHash))) {
+            if ((transaction.processTransaction() != true)) {
+                System.out.println("Transaction failed to process. Discarded.");
+                return false;
+            }
+        }
+
+        transactions.add(transaction);
+        System.out.println("Transaction Successfully added to Block");
+        return true;
     }
         
 
