@@ -1,4 +1,5 @@
 package noobchain;
+
 public class TransactionInput {
     
     public String TransactionOutputID;

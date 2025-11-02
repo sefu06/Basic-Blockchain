@@ -1,0 +1,7 @@
+noobchain/NoobChain.class
+noobchain/TransactionOutput.class
+noobchain/Transaction.class
+noobchain/Block.class
+noobchain/Wallet.class
+noobchain/StringUtil.class
+noobchain/TransactionInput.class

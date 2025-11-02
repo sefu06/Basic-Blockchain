@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NoobChain Demo</title>
+</head>
+<body>
+    <h1>NoobChain Web Interface</h1>
+
+    <button onclick="viewBlockchain()">View Blockchain</button>
+    <pre id="chain"></pre>
+
+    <h2>Send Funds</h2>
+    <input id="sender" placeholder="Sender (A/B)">
+    <input id="recipient" placeholder="Recipient (A/B)">
+    <input id="amount" placeholder="Amount">
+    <button onclick="sendFunds()">Send</button>
+
+    <script>
+        async function viewBlockchain() {
+            let response = await fetch('http://localhost:4567/blockchain');
+            let data = await response.json();
+            document.getElementById('chain').textContent = JSON.stringify(data, null, 2);
+        }
+
+        async function sendFunds() {
+            let sender = document.getElementById('sender').value;
+            let recipient = document.getElementById('recipient').value;
+            let amount = parseFloat(document.getElementById('amount').value);
+
+            let response = await fetch('http://localhost:4567/transaction', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ sender, recipient, amount })
+            });
+
+            let data = await response.json();
+            alert('Transaction processed! Check blockchain view.');
+        }
+    </script>
+</body>
+</html>
