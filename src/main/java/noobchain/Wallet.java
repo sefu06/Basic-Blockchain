@@ -15,6 +15,10 @@ public class Wallet {
         generateKeyPair();
     }
 
+    public PublicKey getPublicKey() {
+        return publicKey; // assuming 'blockchain' is your ArrayList<Block>
+    }
+
     public void generateKeyPair() {
 
         try {

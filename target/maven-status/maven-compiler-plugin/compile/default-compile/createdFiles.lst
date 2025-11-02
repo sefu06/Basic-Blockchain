@@ -1,7 +1,9 @@
 noobchain/NoobChain.class
+noobchain/MainWeb$TransactionRequest.class
 noobchain/TransactionOutput.class
 noobchain/Transaction.class
 noobchain/Block.class
+noobchain/MainWeb.class
 noobchain/Wallet.class
 noobchain/StringUtil.class
 noobchain/TransactionInput.class

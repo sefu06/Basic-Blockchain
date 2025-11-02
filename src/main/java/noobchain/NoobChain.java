@@ -15,7 +15,7 @@ public class NoobChain {
     public static Wallet walletB;
     public static Transaction genesisTransaction;
 
-    public static void main(String[] args) {
+   /*  public static void main(String[] args) {
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 
         walletA = new Wallet();
@@ -59,7 +59,7 @@ public class NoobChain {
 
         isChainValid();
         
-    }
+    }*/
 
     public static Boolean isChainValid() {
         Block currentBlock;
@@ -93,4 +93,10 @@ public class NoobChain {
         newBlock.mineBlock(difficulty);
         blockchain.add(newBlock);
     }
+
+    public ArrayList<Block> getBlocks() {
+        return blockchain;
+    }
+    
+   
 }
