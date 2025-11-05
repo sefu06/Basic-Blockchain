@@ -10,7 +10,10 @@ import noobchain.MainWeb.TransactionRequest;
 
 public class MainWeb {
 
+    
     public static void main(String[] args) {
+
+        staticFiles.location("/public");
 
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         

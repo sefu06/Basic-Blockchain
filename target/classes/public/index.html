@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NoobChain Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>💎 NoobChain Explorer</h1>
+
+  <section id="balances">
+    <h2>Wallet Balances</h2>
+    <div>A: <span id="balanceA">loading...</span></div>
+    <div>B: <span id="balanceB">loading...</span></div>
+  </section>
+
+  <section id="send">
+    <h2>Send Transaction</h2>
+    <form id="txForm">
+      <label>Sender:
+        <select id="sender">
+          <option value="A">A</option>
+          <option value="B">B</option>
+        </select>
+      </label>
+      <label>Recipient:
+        <select id="recipient">
+          <option value="A">A</option>
+          <option value="B">B</option>
+        </select>
+      </label>
+      <label>Amount:
+        <input id="amount" type="number" step="0.1" value="1">
+      </label>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <section id="chain">
+    <h2>Blockchain</h2>
+    <pre id="blockchainData"></pre>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
