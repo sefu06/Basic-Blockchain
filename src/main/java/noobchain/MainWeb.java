@@ -39,6 +39,7 @@ public class MainWeb {
         });
 
         // Send funds
+
         post("/transaction", (req, res) -> {
             res.type("application/json");
 
@@ -47,15 +48,24 @@ public class MainWeb {
             Wallet fromWallet = tr.from.equals("A") ? NoobChain.walletA : NoobChain.walletB;
             Wallet toWallet = tr.to.equals("A") ? NoobChain.walletA : NoobChain.walletB;
 
-            // sendFunds expects recipient public key and amount
+            // Create a new block linked to the latest one
+            Block lastBlock = NoobChain.blockchain.get(NoobChain.blockchain.size() - 1);
+            Block newBlock = new Block(lastBlock.hash);
+
+            // Send funds and add transaction to block
             Transaction tx = fromWallet.sendFunds(toWallet.publicKey, tr.amount);
             if (tx != null) {
+                newBlock.addTransaction(tx);
+                NoobChain.addBlock(newBlock); // ✅ actually adds the block to the chain
+                System.out.println("Transaction mined!");
+                System.out.println("WalletA balance: " + NoobChain.walletA.getBalance());
+                System.out.println("WalletB balance: " + NoobChain.walletB.getBalance());
                 return gson.toJson("Transaction Successful");
             } else {
                 return gson.toJson("Transaction Failed: Not enough funds");
             }
-
         });
+      
 
         System.out.println("Server running on http://localhost:4567");
     }
