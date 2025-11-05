@@ -34,3 +34,9 @@ Example: hash("hello") → some fixed 256-bit value every time.
 A good cryptographic hash is one-way (preimage resistant): given only the hash, you cannot feasibly reconstruct the original input by any direct mathematical inversion.
 
 So: you can compute the hash from the data, but you cannot (practically) recover the data from the hash.
+
+
+# How to run:
+The final product of this project was to create a simple program where there are two wallets where transactions can be made via blockchains. After each transaction, the JSON format of the block chain is printed to see the process of each transaction.
+
+To test out the project, clone this repository onto your comupter and then run: **mvn clean compile exec:java** this will build the project and run on java spark's local server, which is run on **http://localhost:4567**.
